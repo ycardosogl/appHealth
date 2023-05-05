@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {View, Text, TextInput, Button} from "react-native";
+import {View, Text, TextInput, Button, StyleSheet} from "react-native";
 import ResultImc from "./resultimc";
 
 export default function Form(){
@@ -29,26 +29,74 @@ export default function Form(){
             }    
         
     return(
-    <View>
+    <View style = {styles.container}>
         <View>
-                <Text>Altura</Text>
-            <TextInput
+                <Text style = {styles.label} >Altura</Text>
+            <TextInput style = {styles.input}
                     onChangeText={setAltura}
                     value={altura}
                     placeholder="Ex: 1.75"
                     keyboardType="numeric"
              />
-                <Text>Peso</Text>
-            <TextInput
+                <Text style = {styles.label}>Peso</Text>
+            <TextInput style = {styles.input1}
                     onChangeText={setPeso}
                     value={peso}
                     placeholder="Ex: 70.750"
                     keyboardType="numeric"
             />
-            <Button onPress={() => validarImc()} 
-            title="CALCULAR IMC"/>
+            <Button  onPress={() => validarImc()} 
+            title="CALCULAR IMC" color={'#4b0082'} />
         </View>
-        <ResultImc messageResultImc={messageImc} resultImc={imc}/>
+        <ResultImc messageResultImc={messageImc} resultImc={imc}
+    style = {styles.resultContainer}    
+    />
     </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: "",
+      alignItems: "center",
+      justifyContent: "center",
+      paddingHorizontal: 10,
+    },
+    label: {
+      color: "#6a5acded",  
+      fontSize: 20,
+      fontWeight: "bold",
+      marginTop: 20,
+      Bottom: 5,
+      alignSelf: "center",
+    },
+    input: {
+      height: 55,
+      width: "100%",
+      borderWidth: 2,
+      borderColor: "burble",
+      borderRadius: 10,
+      paddingHorizontal: 35,
+      Bottom: 20,
+      fontSize: 20,
+      
+    },
+    input1: {
+        height: 55,
+        width: "100%",
+        borderWidth: 2,
+        borderColor: "burble",
+        borderRadius: 10,
+        paddingHorizontal: 25,
+        Bottom: 10,
+        fontSize: 20,
+        
+      },
+    resultContainer: {
+      marginTop: 40,
+      alignItems: "center",
+   
+    },
+     
+  });
